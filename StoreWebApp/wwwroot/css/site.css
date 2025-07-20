@@ -30,7 +30,7 @@ body {
   text-align: start;
 }
 
-.itemTitle .itemBtn {
+.itemTitle, .itemBtn {
     opacity: 0;
 }
 
