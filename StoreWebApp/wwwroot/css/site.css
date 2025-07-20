@@ -29,3 +29,15 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.itemTitle .itemBtn {
+    opacity: 0;
+}
+
+.item:hover .itemTitle, .item:hover .itemBtn {
+    opacity: 1;
+}
+
+.item:hover .itemImg {
+    opacity: 0.4;
+}

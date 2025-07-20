@@ -1,6 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using StoreWebApp.Data;
 using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<MvcContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -26,7 +31,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=Payment}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 
