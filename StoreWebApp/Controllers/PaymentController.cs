@@ -14,9 +14,16 @@ namespace StoreWebApp.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _context.Items.ToListAsync());
+            var items = from d in _context.Items
+                       select d;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                items = items.Where(d => d.Name.Contains(searchString));
+                return View(await items.ToListAsync());
+            }
+            return View(await items.ToListAsync());
         }
 
         [HttpPost]
